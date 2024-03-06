@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snow Fall Animation</title>
+</head>
+<style>
+        
+    body{
+        overflow: hidden;
+        height: 100vh;
+        background:  #000000;
+    }
+
+    i{
+        top: 0;
+        position: absolute;
+        height: 8.2px;
+        border-radius: 50px;
+        background: #ffffff;
+
+        animation: animate1 5s linear infinite;
+    }
+    i:nth-child(3n+1){
+        background: #ffffff;
+    }
+    i:nth-child(3n+2){
+        background: #ffffff;
+    }
+    i:nth-child(3n+3){
+        background: #bdcbcb;
+    }
+    i:nth-child(3n+4){
+        background: #7072b1;
+    }
+	@keyframes animate1 {
+		0%{
+			transform: translateX(calc(-50% - 8.2px)) translateY(-200px);
+
+		}
+		100%{
+			transform: translateX(calc(-50% - 8.2px)) translateY(calc(100vh + 200px));
+		}
+	}
+</style>
+<body>
+    <script>
+        function rain() {
+    let amount = 150;
+    let body = document.querySelector("body");
+    let i = 0;
+    while (i < amount) {
+        let drop = document.createElement("i");
+        let size = Math.random() * 5;
+        let posX = Math.floor(Math.random() * (window.innerWidth - 8.2 - size));
+        let delay = Math.random() * -20;
+        let duration = Math.random() * 5;
+
+        drop.style.width = 8.2 + size + "px";
+        drop.style.left = posX + "px";
+        drop.style.animationDelay = delay + "s";
+        drop.style.animationDuration = 1 + duration + "s";
+        body.appendChild(drop);
+        i ++;
+    }
+}
+rain();
+    </script>
+</body>
+</html>
